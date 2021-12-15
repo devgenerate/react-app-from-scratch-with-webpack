@@ -6,6 +6,7 @@ import './app.scss'
 
 export default function App() {
   const [text, setText] = useState('')
+
   return (
     <main>
       <h1>Main App With Input</h1>

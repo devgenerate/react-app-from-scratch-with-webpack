@@ -1,6 +1,8 @@
-const { HotModuleReplacementPlugin } = require('webpack')
+const path = require('path')
+const { HotModuleReplacementPlugin, DefinePlugin } = require('webpack')
 const { merge } = require('webpack-merge')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const DotEnv = require('dotenv-webpack')
 const common = require('./webpack.common')
 
 /** @type {import('webpack').Configuration} */
@@ -20,7 +22,10 @@ const devConfig = {
   },
   plugins: [
     new HotModuleReplacementPlugin(),
-    new ReactRefreshWebpackPlugin()
+    new ReactRefreshWebpackPlugin(),
+    new DotEnv({
+      path: path.resolve(__dirname, '../development.env')
+    })
   ],
   devtool: 'eval-source-map'
 }
